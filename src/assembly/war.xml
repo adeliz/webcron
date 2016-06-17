@@ -1,0 +1,26 @@
+<assembly>
+	<id>war</id>
+	<!-- START SNIPPET: formats -->
+	<formats>
+		<!--<format>tar.gz</format>
+		<format>tar.bz2</format>-->
+		<format>zip</format>
+	</formats>
+	<!-- END SNIPPET: formats -->
+	<!-- START SNIPPET: fileSets -->
+	<files>
+		<file>
+			<source>target/${artifactId}.${packaging}</source>
+			<outputDirectory>./</outputDirectory>
+			<destName>${artifactId}.war</destName>
+		</file>
+	</files>
+	<!--<dependencySets>
+	<dependencySet>
+	<includes>
+	<include>*:war</include>
+	</includes>
+	</dependencySet>
+	</dependencySets>-->
+	<!-- END SNIPPET: fileSets -->
+</assembly>
