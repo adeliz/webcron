@@ -1,0 +1,255 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Getting started &mdash; Webcron 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap-none.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/adeliz.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Webcron 1.0 documentation" href="../index.html" />
+    <link rel="prev" title="Configuration" href="../configuration/index.html" />
+
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-48269251-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  </head>
+  <body>
+
+
+
+
+ <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="http://adeliz.bitbucket.org/"><img src="../_static/logo_grey.svg" alt="Adeliz"> Adeliz</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="http://adeliz.bitbucket.org/">Home</a></li>
+					<li class="active"><a href="#">Documentation</a></li>
+					<!-- <form class="navbar-form navbar-right"
+						action="docs/build/html/search.html" method="get">
+						<div class="form-group">
+							<input type="text" name="q" class="form-control"
+								placeholder="Rechercher" />
+						</div>
+						<input type="hidden" name="check_keywords" value="yes" /> <input
+							type="hidden" name="area" value="default" />
+					</form> -->
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</nav>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav"><h3><a href="../index.html">Table Of Content</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#create-a-job">Create a job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#update-a-job">Update a job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#delete-a-job">Delete a job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#view-logs">View logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-a-job">Run a job</a></li>
+</ul>
+</li>
+</ul>
+
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="getting-started">
+<h1>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<p>This section contains common tasks in Webcron, to get new users using the system quickly and easily.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="create-a-job">
+<h2>Create a job<a class="headerlink" href="#create-a-job" title="Permalink to this headline">¶</a></h2>
+<p>Click the <strong>new</strong> button.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="job-excution">
+<h3>1. Job excution<a class="headerlink" href="#job-excution" title="Permalink to this headline">¶</a></h3>
+<p>Define its execution period using the <strong>cron</strong> parameter (<a class="reference external" href="http://www.quartz-scheduler.org/documentation/quartz-1.x/tutorials/crontrigger">Documentation</a>)</p>
+<p>Check the <strong>Activate</strong> checkbox to enable the job.</p>
+<img alt="../_images/job.png" src="../_images/job.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="job-s-request">
+<h3>2. Job&#8217;s request<a class="headerlink" href="#job-s-request" title="Permalink to this headline">¶</a></h3>
+<p>Choose the request method (GET, POST, PUT or DELETE)
+Define the url
+Set the parameters to send for PUT or POST methods
+It can be :</p>
+<ul class="simple">
+<li>parameters in the form field</li>
+</ul>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">title</span><span class="o">=</span><span class="nx">foo</span>
+<span class="nx">body</span><span class="o">=</span><span class="nx">bar</span>
+<span class="nx">userId</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>a JSON string in the body field</li>
+</ul>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;foo&#39;</span><span class="p">,</span>
+   <span class="nx">body</span><span class="o">:</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span>
+   <span class="nx">userId</span><span class="o">:</span> <span class="mi">1</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<img alt="../_images/request.png" src="../_images/request.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="process-response-using-script">
+<h3>3. Process response using script<a class="headerlink" href="#process-response-using-script" title="Permalink to this headline">¶</a></h3>
+<p>The response returned by the web request can be processed using a script. The result will trigger or not an email notification.
+The javascript function must be named <strong>fx</strong> et contains one unique parameter which is the response from the web request.
+This fonction must return true or false. When true is returned, an email will be sent.</p>
+<img alt="../_images/script.png" src="../_images/script.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="trigger-email-notification">
+<h3>4. Trigger email notification<a class="headerlink" href="#trigger-email-notification" title="Permalink to this headline">¶</a></h3>
+<p>An email can be sent using :</p>
+<ul class="simple">
+<li>using the http request status (choose <em>If execution fails</em>)</li>
+<li>using the script&#8217;s result (choose <em>After execution</em>)</li>
+</ul>
+<p>Available variables are :</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">%Name%</span></tt> : Job&#8217;s name</li>
+<li><tt class="docutils literal"><span class="pre">%Status%</span></tt> : Request status (HTTP code)</li>
+<li><tt class="docutils literal"><span class="pre">%StatusText%</span></tt> : Request status text</li>
+<li><tt class="docutils literal"><span class="pre">%Body%</span></tt> : Request&#8217;s response body</li>
+</ul>
+<img alt="../_images/notification.png" src="../_images/notification.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Click the <strong>Add</strong> button to create the new job.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="update-a-job">
+<h2>Update a job<a class="headerlink" href="#update-a-job" title="Permalink to this headline">¶</a></h2>
+<p>Select the job to  modify in the list and clicke the <strong>Edit</strong> button.
+Make your changes in the editor&#8217;s window.
+Click the <strong>Update</strong> button.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="delete-a-job">
+<h2>Delete a job<a class="headerlink" href="#delete-a-job" title="Permalink to this headline">¶</a></h2>
+<p>Select the job to  delete.
+Click the <strong>Delete</strong> button.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="view-logs">
+<h2>View logs<a class="headerlink" href="#view-logs" title="Permalink to this headline">¶</a></h2>
+<p>Logs can be visualized in the <strong>Logs</strong> tab (Right panel).
+Select a log to view the body&#8217;s response of the request.</p>
+<img alt="../_images/logs.png" src="../_images/logs.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="run-a-job">
+<h2>Run a job<a class="headerlink" href="#run-a-job" title="Permalink to this headline">¶</a></h2>
+<p>Job can be runned manually.
+Click the <strong>Run</strong> button to execute a job.
+The result will be added in the logs.</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2015, Adeliz.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

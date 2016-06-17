@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Configuration &mdash; Webcron 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap-none.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/adeliz.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Webcron 1.0 documentation" href="../index.html" />
+    <link rel="next" title="Getting started" href="../gettingstarted/index.html" />
+    <link rel="prev" title="Installation" href="../installation/index.html" />
+
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-48269251-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  </head>
+  <body>
+
+
+
+
+ <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="http://adeliz.bitbucket.org/"><img src="../_static/logo_grey.svg" alt="Adeliz"> Adeliz</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="http://adeliz.bitbucket.org/">Home</a></li>
+					<li class="active"><a href="#">Documentation</a></li>
+					<!-- <form class="navbar-form navbar-right"
+						action="docs/build/html/search.html" method="get">
+						<div class="form-group">
+							<input type="text" name="q" class="form-control"
+								placeholder="Rechercher" />
+						</div>
+						<input type="hidden" name="check_keywords" value="yes" /> <input
+							type="hidden" name="area" value="default" />
+					</form> -->
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</nav>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav"><h3><a href="../index.html">Table Of Content</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#web-xml">web.xml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#webcron-properties">webcron.properties</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gettingstarted/index.html">Getting started</a></li>
+</ul>
+
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="configuration">
+<h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
+<p>For production use, it is a good idea to define an external data directory that will contain database and properties file, to make it easier to upgrade. Properties will include SMTP parameters. A proxy can also be defined for HTTP requests.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="web-xml">
+<h2>web.xml<a class="headerlink" href="#web-xml" title="Permalink to this headline">¶</a></h2>
+<p>When running a Webcron WAR inside a servlet container the data directory can be specified using a servlet context parameter.
+Create the following &lt;context-param&gt; element in the WEB-INF/web.xml file for the Webcron application:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;web-app&gt;</span>
+    ...
+    <span class="nt">&lt;context-param&gt;</span>
+            <span class="nt">&lt;param-name&gt;</span>WEBCRON<span class="nt">&lt;/param-name&gt;</span>
+            <span class="nt">&lt;param-value&gt;</span>E:\webcron<span class="nt">&lt;/param-value&gt;</span>
+    <span class="nt">&lt;/context-param&gt;</span>
+    ...
+<span class="nt">&lt;/web-app&gt;</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>This folder will contain :</dt>
+<dd><ul class="first last simple">
+<li>the database file (webcron.odb)</li>
+<li>the properties file (webcron.properties)</li>
+</ul>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="webcron-properties">
+<h2>webcron.properties<a class="headerlink" href="#webcron-properties" title="Permalink to this headline">¶</a></h2>
+<p>In the webrcon.properties file, the SMTP server has to be set (at least host, port and sender&#8217;s email). A proxy that will be used only for HTTP requests can also be specified.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#SMTP Configuration</span>
+<span class="n">mail</span><span class="o">.</span><span class="n">smtp</span><span class="o">.</span><span class="n">host</span><span class="o">=</span><span class="n">smtp</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">com</span>
+<span class="n">mail</span><span class="o">.</span><span class="n">smtp</span><span class="o">.</span><span class="n">port</span><span class="o">=</span><span class="mi">25</span>
+<span class="c">#mail.smtp.auth=true</span>
+<span class="c">#mail.smtp.user=user</span>
+<span class="c">#mail.smtp.password=password</span>
+<span class="c">#mail.smtp.starttls.enable=true</span>
+
+<span class="n">mail</span><span class="o">.</span><span class="n">sender</span><span class="o">=</span><span class="n">notify</span><span class="o">.</span><span class="n">webcron</span><span class="nd">@example.com</span>
+<span class="c">#mail.sender=John Doe &lt;John.doe@example.com&gt;</span>
+
+<span class="c">#PROXY configuration - Only for HTTP requests</span>
+<span class="c">#proxy.host=192.168.1.1</span>
+<span class="c">#proxy.port=8080</span>
+<span class="c">#proxy.auth=true</span>
+<span class="c">#proxy.user=user</span>
+<span class="c">#proxy.password=password</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2015, Adeliz.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
