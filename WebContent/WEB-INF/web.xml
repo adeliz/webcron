@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
 	<display-name>webcron</display-name>
-	<!--<context-param>
+	<!-- <context-param>
 		<param-name>WEBCRON</param-name>
 		<param-value>E:\webcron</param-value>
-	</context-param>-->
+	</context-param> -->
+	<init-param>
+	    <param-name>com.sun.jersey.spi.container.ContainerResponseFilters</param-name>
+	    <param-value>com.sun.jersey.api.container.filter.LoggingFilter;com.ae.webcron.CORSFilter</param-value>
+	</init-param>
 	<!-- ObjectDB -->
 	<listener>
 		<listener-class>com.ae.webcron.SchedulerListener</listener-class>
@@ -25,7 +29,7 @@
 	<listener>
 		<listener-class>org.quartz.ee.servlet.QuartzInitializerListener</listener-class>
 	</listener>
-	<!-- Shiro -->
+	<!-- Shiro 
 	<listener>
 		<listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>
 	</listener>
@@ -40,7 +44,7 @@
 		<dispatcher>FORWARD</dispatcher>
 		<dispatcher>INCLUDE</dispatcher>
 		<dispatcher>ERROR</dispatcher>
-	</filter-mapping>
+	</filter-mapping>-->
 	<!-- Jersey -->
 	<servlet>
 		<servlet-name>Jersey REST Service</servlet-name>
