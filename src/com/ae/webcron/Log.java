@@ -19,7 +19,6 @@ public class Log implements Serializable {
     private String statusText;
     private String headers;
     private String body;
-    @XmlElement(nillable=true)
     private String scriptResult;
     private int duration;
     
@@ -38,6 +37,7 @@ public class Log implements Serializable {
         this.statusText = statusText;
         this.body = body;
         this.headers = headers;
+        this.scriptResult = null;
     }
 
 	public long getStartTime() {
@@ -96,6 +96,7 @@ public class Log implements Serializable {
 		this.duration = duration;
 	}
 
+	@XmlElement(nillable=true)
 	public String getScriptResult() {
 		return scriptResult;
 	}
