@@ -41,7 +41,7 @@
   "let" :
   {
     "APPLICATION"  : "webcron",
-    "QOOXDOO_PATH" : "../../../qooxdoo/webcontent",
+    "QOOXDOO_PATH" : "../../../qooxdoo",
     "QXTHEME"      : "webcron.theme.Theme",//"ae.theme.Material",
     "API_EXCLUDE"  : ["qx.test.*", "${APPLICATION}.theme.*", "${APPLICATION}.test.*"],
     "LOCALES"      : [ "en" ],
@@ -59,7 +59,7 @@
     // using a contrib: library, it will be downloaded into the path specified
     // by the 'cache/downloads' config key
     
-    "libraries" :
+    /*"libraries" :
     {
       "library" :
       [
@@ -67,7 +67,7 @@
           "manifest" : "D:/DEV/Workspace/material/WebContent/qx/Manifest.json"
         }
       ]
-    },
+    },*/
     
 
 	  "core" : {

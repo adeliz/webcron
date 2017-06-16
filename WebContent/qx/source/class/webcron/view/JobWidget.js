@@ -223,6 +223,7 @@ qx.Class.define("webcron.view.JobWidget",
             		case "Inactive":
             			status.setValue("<font color='#cccccc'>"+value+"</font");
             			break;
+            		case "Script success":
             		case "OK":
             			status.setValue("<font color='#0066cc'>"+value+"</font");
             			break;

@@ -265,6 +265,8 @@ public class CronJob implements Serializable, Job {
 				e1.printStackTrace();
 			}
 			
+			//Must be set as a user parameter
+			Unirest.setTimeouts(10000,60000*60);
 			
 			switch (cronjob.getRequest().getMethod()) {
 			case "GET":
@@ -382,7 +384,7 @@ public class CronJob implements Serializable, Job {
 				}
 
 			}
-			if (e.getCause().getClass().getName().equals("org.apache.http.conn.ConnectTimeoutException")) {
+			if (e.getCause().getClass().getName().equals("org.apache.http.conn.ConnectTimeoutException") || e.getCause().getClass().getName().equals("java.net.SocketTimeoutException")) {
 				log = new Log((new Date()).getTime(), 408, "Time out", "", "");
 				if (!job.getAlarm()) {
 					if (job.getNotification().getNotify() > 0) {

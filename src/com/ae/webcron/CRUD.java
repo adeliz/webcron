@@ -22,6 +22,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Request;
+import javax.ws.rs.core.Response;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -44,7 +45,7 @@ public class CRUD {
 	@GET
 	@Path("/version/")
 	//@Produces("application/json")
-	public String getVersion() {
+	public Response getVersion() {
 
 		InputStream resourceAsStream =
 		          this.getClass().getResourceAsStream(
@@ -59,7 +60,11 @@ public class CRUD {
 		        }catch(Exception e){
 		        	
 		        }
-		return version;
+		return Response
+	            .status(200)
+	            .header("Access-Control-Allow-Origin", "*")
+	            .entity(version)
+	            .build();
 	}
 	
 	@GET

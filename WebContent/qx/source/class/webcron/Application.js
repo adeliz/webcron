@@ -108,10 +108,11 @@ qx.Class.define("webcron.Application",
     main : function()
     {
 
+    	qx.core.Environment.baseUrl="http://cmhm-sig/webcron/api/v1/";
+    	if(window.location.search.split("=")[1]=="test"){
+    		qx.core.Environment.baseUrl="http://localhost:8080/webcron/api/v1/";
+    	}
     	
-    	
-    	qx.core.Environment.baseUrl="http://localhost:8080/webcron/api/v1/";
-    	//qx.core.Environment.baseUrl="http://cmhm-sig/webcron/api/v1/";
     	var jobstore = new webcron.store.Job();
     	this.setJobStore(jobstore);
     	

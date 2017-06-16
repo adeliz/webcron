@@ -121,10 +121,13 @@ qx.Class.define("webcron.store.Job", {
 				if(jobs[i].lastlog){
 					status = "OK";
 					if(!(typeof jobs[i].lastlog.scriptResult === "undefined")){
-						if(jobs[i].lastlog.scriptResult){
+						if(jobs[i].lastlog.scriptResult==="false"){
 							status= "Script success";
 						}else{
-							status= "Script error";
+							if(jobs[i].notification.script!=""){
+								status= "Script error";
+							}
+							
 						}
 					}
 					if(jobs[i].lastlog.status!=200){
