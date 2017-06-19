@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -30,6 +31,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+import org.apache.commons.text.StrSubstitutor;
 import org.apache.http.HttpHost;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.UsernamePasswordCredentials;
@@ -504,25 +506,31 @@ public class CronJob implements Serializable, Job {
 
 		Notification notif = cronjob.getNotification();
 
+		Map<String, String> values = new HashMap<String, String>();
+		values.put("Name", cronjob.getName());
+		values.put("Status", String.valueOf(cronjob.getLastlog().getStatus()));
+		values.put("StatusText", cronjob.getLastlog().getStatusText());
+		values.put("Body", cronjob.getLastlog().getBody());
+		values.put("DateTime", new SimpleDateFormat("yyyyMMdd_HHmmSS").format(new Date()));
+		StrSubstitutor sub = new StrSubstitutor(values, "%", "%");
+		
 		String subject = notif.getSubject();
 		if(subject!=null){
-			subject = subject.replaceAll("%Name%", cronjob.getName());
-			subject = subject.replaceAll("%Status%", String.valueOf(cronjob.getLastlog().getStatus()));
-			subject = subject.replaceAll("%StatusText%", cronjob.getLastlog().getStatusText());
-			subject = subject.replaceAll("%Body%", cronjob.getLastlog().getBody());
+			subject = sub.replace(subject);
 		}
 		
-
 		String text = notif.getText();
 		if(text!=null){
-			text = text.replaceAll("%Name%", cronjob.getName());
-			text = text.replaceAll("%Status%", String.valueOf(cronjob.getLastlog().getStatus()));
-			text = text.replaceAll("%StatusText%", cronjob.getLastlog().getStatusText());
-			text = text.replaceAll("%Body%", cronjob.getLastlog().getBody());
+			text = sub.replace(text);
+		}
+		
+		String filename = notif.getFilename();
+		if(filename!=null){
+			filename = sub.replace(filename);
 		}
 		
 
 		//GmailSender.sendEmail(notif.getInternetAddresses(), subject, text);
-		SmtpSender.sendEmail(notif.getInternetAddresses(), subject, text, ctx);
+		SmtpSender.sendEmail(notif.getInternetAddresses(), subject, text, filename ,cronjob.getLastlog().getBody(),ctx);
 	}
 }

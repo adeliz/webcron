@@ -113,6 +113,9 @@ qx.Class.define("webcron.store.Job", {
 				if(!jobs[i].notification.text){
 					jobs[i].notification.text=null;
 				}
+				if(!jobs[i].notification.filename){
+					jobs[i].notification.filename=null;
+				}
 				
 				var status = "";
 				if(!jobs[i].active){

@@ -18,7 +18,9 @@ public class Notification implements Serializable {
     private String subject;
     private String text;
     private int notify; //0 inactive, 1 active on error, 2 active on success + on error
-    private String script;
+    private String filename;
+
+	private String script;
  
     // Constructors:
     public Notification() {
@@ -68,6 +70,13 @@ public class Notification implements Serializable {
 		this.script = script;
 	}
 
+	public String getFilename() {
+		return filename;
+	}
+
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
 	// String Representation:
     @Override
     public String toString() {

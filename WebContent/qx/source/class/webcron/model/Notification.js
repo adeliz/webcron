@@ -49,6 +49,15 @@ qx.Class.define("webcron.model.Notification", {
             check : "String",
             event : "changeScript",
             init:""
+        },
+		
+        /**
+		 * Filename
+		 */
+        filename : {
+            check : "String",
+            event : "changeFilename",
+            init:""
         }
 	},
 

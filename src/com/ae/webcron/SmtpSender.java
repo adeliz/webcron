@@ -5,22 +5,28 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.Multipart;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+import javax.mail.util.ByteArrayDataSource;
 import javax.servlet.ServletContext;
 
 
 public class SmtpSender {
 	
 	public static void main(String[] args) {
-		//sendEmail("adelise.skope@gmail.com","Test","a test description");
+		//sendEmail("adelise.skope@gmail.com","Test","a test description","test.txt","blabla blabl\n blabla");
 	}
 	
-	public static void sendEmail(String to,String subject, String text, ServletContext ctx){
+	public static void sendEmail(String to,String subject, String text, String filename, String attachment, ServletContext ctx){
 		Properties props = new Properties();
 		InputStream is = null;
 		try {
@@ -54,9 +60,24 @@ public class SmtpSender {
 				message.setText("");
 			}
 
+			if(filename!=null && attachment!=null){
+				MimeBodyPart attachmentPart = new MimeBodyPart();
+				Multipart multipart = new MimeMultipart();
+
+				DataSource ds = new ByteArrayDataSource(attachment.getBytes("UTF-8"), "application/octet-stream");
+				attachmentPart = new MimeBodyPart();
+				attachmentPart.setDataHandler(new DataHandler(ds));
+
+				attachmentPart.setFileName(filename);
+				multipart.addBodyPart(attachmentPart);
+				message.setContent(multipart);
+			}
+			
+			System.out.println("Send");
 			Transport.send(message);
 
-		} catch (MessagingException e) {
+		} catch (Exception e) {
+			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
 	}

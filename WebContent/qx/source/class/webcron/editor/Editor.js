@@ -99,14 +99,15 @@ qx.Class.define("webcron.editor.Editor",
                 				method:model.getRequest().getMethod(),
                 				url:model.getRequest().getUrl(),
                 				body:model.getRequest().getBody(),
-                				form:model.getRequest().getForm()
+                				type:model.getRequest().getType()
                 			},
                 			notification:{
                 				notify:model.getNotification().getNotify(),
                 				internetAddresses:model.getNotification().getInternetAddresses(),
                 				subject:model.getNotification().getSubject(),
                 				text:model.getNotification().getText(),
-                				script:model.getNotification().getScript()
+                				script:model.getNotification().getScript(),
+                				filename:model.getNotification().getFilename()
                 				//script:this.getScriptEditor()._ace.getSession().getValue()
                 			}
             		}

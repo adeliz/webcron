@@ -281,6 +281,7 @@ public class CRUD {
 			not.setSubject(newnot.getSubject());
 			not.setText(newnot.getText());
 			not.setScript(newnot.getScript());
+			not.setFilename(newnot.getFilename());
 			cronjob.setNotification(not);
 			cronjob.setRequest(req);
 			cronjob.setNextexecution(null);

@@ -191,6 +191,12 @@
 			<version>1.0.13</version>
 			<scope>runtime</scope>
 		</dependency> -->
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-text -->
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-text</artifactId>
+		    <version>1.1</version>
+		</dependency>
 	</dependencies>
 
 	<repositories>

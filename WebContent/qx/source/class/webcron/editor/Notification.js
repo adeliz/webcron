@@ -49,11 +49,13 @@ qx.Class.define("webcron.editor.Notification",
         		var subject = new qx.ui.form.TextField();
         		var text = new qx.ui.form.TextArea();
         		var script = new qx.ui.form.TextArea();
+        		var filename = new qx.ui.form.TextField();
         		
         		notificationForm.add(notify,"Notify");
         		notificationForm.add(internetAddresses,"InternetAddresses");
         		notificationForm.add(subject,"Subject");
         		notificationForm.add(text,"Text");
+        		notificationForm.add(filename,"Filename");
         		//notificationForm.add(script,"Script");
         		
         		var notificationRenderedForm = new qx.ui.form.renderer.Single(notificationForm).set({
