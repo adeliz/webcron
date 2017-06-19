@@ -357,6 +357,9 @@ public class CronJob implements Serializable, Job {
 				}
 			}
 
+			if (job.getNotification().getNotify() == 3) {
+				sendAlarm = true;
+			}
 			/**
 			 * Si la tâche dure plus longtemps que l'intervalle entre 2
 			 * executions, le job se trouve modifié par 2 EntityManager (em)

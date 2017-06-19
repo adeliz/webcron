@@ -79,10 +79,13 @@ qx.Class.define("webcron.view.JobDetail",
     				not= obj.tr("Never");
     				break;
     			case 1:
-    				not= obj.tr("If execution fails");
+    				not= obj.tr("If request fails");
     				break;
     			case 2:
-    				not= obj.tr("After execution");
+    				not= obj.tr("If script returns true");
+    				break;
+    			case 3:
+    				not= obj.tr("Always");
     				break;
     			}
 	    		return not;

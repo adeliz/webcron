@@ -35,8 +35,9 @@ qx.Class.define("webcron.editor.Notification",
         		var notify = new qx.ui.form.SelectBox();
     	        var notifys = [
     	          	{label: this.tr("Never"), data: 0},
-    	          	{label: this.tr("If execution fails"), data: 1},
-    	          	{label: this.tr("After execution"), data: 2}
+    	          	{label: this.tr("If request fails"), data: 1},
+    	          	{label: this.tr("If script returns true"), data: 2},
+    	          	{label: this.tr("Always"), data: 3}
     	        ];
     	        var nModel = qx.data.marshal.Json.createModel(notifys);
     	        var nController = new qx.data.controller.List(null, notify);

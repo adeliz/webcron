@@ -104,9 +104,9 @@ qx.Class.define("webcron.store.Job", {
 				if(!jobs[i].lastexecution){
 					jobs[i].lastexecution=null;
 				}
-				/*if(!jobs[i].request.type){
+				if(!jobs[i].request.type){
 					jobs[i].request.type='RAW';
-				}*/
+				}
 				if(!jobs[i].notification.subject){
 					jobs[i].notification.subject=null;
 				}
