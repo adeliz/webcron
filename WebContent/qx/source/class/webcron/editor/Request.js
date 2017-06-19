@@ -50,11 +50,25 @@ qx.Class.define("webcron.editor.Request",
         		var url = new qx.ui.form.TextField();
         		
         		var body = new qx.ui.form.TextArea();
-        		var form = new qx.ui.form.TextArea();
+
+        		var bodytype = new qx.ui.form.SelectBox();
+    	        var bodytypes = [
+                 	{label: this.tr("raw"), data: "raw"},
+    	          	{label: this.tr("form-data"), data: "form-data"},
+    	          	{label: this.tr("x-www-formurlencoded"), data: "x-www-formurlencoded"}
+    	        ];
+    	        var bModel = qx.data.marshal.Json.createModel(bodytypes);
+    	        var bController = new qx.data.controller.List(null, bodytype);
+    	        bController.setDelegate({bindItem: function(controller, item, index) {
+    		        controller.bindProperty("label", "label", null, item, index);
+    		        controller.bindProperty("data", "model", null, item, index);
+    		    }});
+    	        bController.setModel(bModel);
+    		 	
                 
         		requestForm.add(method,"Method");
         		requestForm.add(url,"Url");
-        		requestForm.add(form,"Form");
+        		requestForm.add(bodytype,"Type");
         		requestForm.add(body,"Body");
         		
         		var requestRenderedForm = new qx.ui.form.renderer.Single(requestForm).set({
@@ -63,7 +77,7 @@ qx.Class.define("webcron.editor.Request",
         		requestRenderedForm.getLayout().setColumnFlex(0,0);
         		requestRenderedForm.getLayout().setColumnMinWidth(0,90);
         		requestRenderedForm.getLayout().setColumnFlex(1,1);
-        		requestRenderedForm.getLayout().setRowFlex(2,1);
+        		//requestRenderedForm.getLayout().setRowFlex(2,1);
         		requestRenderedForm.getLayout().setRowFlex(3,1);
         		
         		this.requestFormController = new qx.data.controller.Form(null, requestForm);        		

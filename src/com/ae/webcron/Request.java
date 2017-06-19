@@ -16,7 +16,7 @@ public class Request implements Serializable {
     //@Id private String jobname;
     private String method;
     private String url;
-    private String form;
+    private String type;
     private String body;
  
     // Constructors:
@@ -46,12 +46,12 @@ public class Request implements Serializable {
 		this.url = url;
 	}
 
-	public String getForm() {
-		return form;
+	public String getType() {
+		return type;
 	}
 
-	public void setForm(String form) {
-		this.form = form;
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	public String getBody() {

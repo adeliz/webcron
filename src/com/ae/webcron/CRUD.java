@@ -273,7 +273,7 @@ public class CRUD {
 			cronjob.setAlarm(false);
 			com.ae.webcron.Request newrequest = (com.ae.webcron.Request) newjob.getRequest();
 			com.ae.webcron.Request req = new com.ae.webcron.Request(newrequest.getMethod(), newrequest.getUrl(), newrequest.getBody());
-			req.setForm(newrequest.getForm());
+			req.setType(newrequest.getType());
 			com.ae.webcron.Notification newnot = (com.ae.webcron.Notification) newjob.getNotification();
 			Notification not = new Notification();
 			not.setNotify(newnot.getNotify());

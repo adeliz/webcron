@@ -37,12 +37,12 @@ qx.Class.define("webcron.model.Request", {
         },
 		
         /**
-		 * Form
+		 * Body type  - raw, form-data, x-www-formulrencoded
 		 */
-        form : {
+        type : {
             check : "String",
-            event : "changeForm",
-            nullable:true
+            event : "changeType",
+            init: "raw"
         }
 	},
 

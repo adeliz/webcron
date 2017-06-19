@@ -273,20 +273,35 @@ public class CronJob implements Serializable, Job {
 				stringResponse = Unirest.get(cronjob.getRequest().getUrl()).asString();
 				break;
 			case "POST":
-				String form = cronjob.getRequest().getForm();
+				String type = cronjob.getRequest().getType();
+				String body = cronjob.getRequest().getBody();
 
-				if(form!=null && form!=""){
+				if(type.equals("form-data")){
 					
-					String[] params = form.split("\n");
+					String[] params = body.split("\n");
 					Map<String,Object> map = new HashMap<String,Object>();
 					for(int i=0;i<params.length;i++){
-						map.put(params[i].split("=")[0],params[i].split("=")[1]);
+						map.put(params[i].split(":")[0],params[i].split(":")[1]);
 					}
 					stringResponse = Unirest.post(cronjob.getRequest().getUrl())
 							.fields(map)
 							.asString();
-				}else{
-					stringResponse = Unirest.post(cronjob.getRequest().getUrl()).body(cronjob.getRequest().getBody()).asString();	
+				}
+				
+				if(type.equals("x-www-form-urlencoded")){
+					
+					String[] params = body.split("\n");
+					Map<String,Object> map = new HashMap<String,Object>();
+					for(int i=0;i<params.length;i++){
+						map.put(params[i].split(":")[0],params[i].split(":")[1]);
+					}
+					stringResponse = Unirest.post(cronjob.getRequest().getUrl())
+							.header("Content-Type", "application/x-www-form-urlencoded")
+							.fields(map)
+							.asString();
+				}
+				if(type.equals("raw")){
+					stringResponse = Unirest.post(cronjob.getRequest().getUrl()).body(body).asString();	
 				}
 				break;
 				
