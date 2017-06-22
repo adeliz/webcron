@@ -52,6 +52,14 @@ qx.Class.define("webcron.store.Log", {
 			}
 			
 			
+			//Select automatically the last log
+			if(qx.core.Init.getApplication().getLogsView()._controller.getModel().length>0){
+				if(qx.core.Init.getApplication().getLogsView()._controller.getSelection().length==0){
+					var ar = new qx.data.Array();
+					ar.push(qx.core.Init.getApplication().getLogsView()._controller.getModel().getItem(0));
+					qx.core.Init.getApplication().getLogsView()._controller.setSelection(ar);
+				}
+			}
 			
 				
 			
