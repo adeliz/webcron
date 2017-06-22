@@ -77,14 +77,19 @@ qx.Class.define("webcron.store.Job", {
 
 		jobs.addListener("success", function(e) {
 			
-			var selection = qx.core.Init.getApplication().getJobsList()._controller.getSelection();
+			/*var selection = qx.core.Init.getApplication().getJobsList()._controller.getSelection();
 			var ind=null;
 			if(selection.length>0){
 				ind=selection.getItem(0).getId();
-			}
+			}*/
 			
-			qx.core.Init.getApplication().getProject().getJobs().removeAll();
+			//qx.core.Init.getApplication().getProject().getJobs().removeAll();
 			var jobs = e.getData();
+			
+			if(JSON.stringify(qx.util.Serializer.toNativeObject(qx.core.Init.getApplication().getProject().getJobs())) === JSON.stringify(jobs)){
+				console.log(true);
+			};
+			
 			
 			for(i=0;i<jobs.length;i++){
 				
@@ -139,7 +144,7 @@ qx.Class.define("webcron.store.Job", {
 				}
 				jobs[i].status = status;
 
-				
+				//JSON.stringify(obj1) === JSON.stringify(obj2);
 				/*var delegate = {
 					getModelClass : function(properties) {
 				        switch(properties){
@@ -161,10 +166,26 @@ qx.Class.define("webcron.store.Job", {
 				marshaler.toClass(jobs[i]);
 				var model = marshaler.toModel(jobs[i]);*/
 				
-				qx.core.Init.getApplication().getProject().addJob(qx.data.marshal.Json.createModel(jobs[i]));
+				if(qx.core.Init.getApplication().getProject().getJobs().filter(function(item){
+						return item.getId()==jobs[i].id;
+					}).length==0)
+				{
+					qx.core.Init.getApplication().getProject().addJob(qx.data.marshal.Json.createModel(jobs[i]));
+				}else{
+					qx.core.Init.getApplication().getProject().updateJob(qx.data.marshal.Json.createModel(jobs[i]));
+				}
 			}
 			
-			var model = qx.core.Init.getApplication().getJobsList()._controller.getModel();
+			for(var i=0;i<qx.core.Init.getApplication().getProject().getJobs().length;i++){
+				if(jobs.filter(function(item){
+					return item.id==qx.core.Init.getApplication().getProject().getJobs().getItem(i).getId();
+				}).length==0){
+					qx.core.Init.getApplication().getProject().removeJob(qx.core.Init.getApplication().getProject().getJobs().getItem(i));
+				}
+			}
+			
+			
+			/*var model = qx.core.Init.getApplication().getJobsList()._controller.getModel();
 			var selection=null;
 			for(var i=0;i<model.length;i++){
 				if(model.getItem(i).getId()==ind) {
@@ -173,7 +194,7 @@ qx.Class.define("webcron.store.Job", {
 			}
 			var ar = new qx.data.Array();
 			ar.push(selection);
-			qx.core.Init.getApplication().getJobsList()._controller.setSelection(ar);
+			qx.core.Init.getApplication().getJobsList()._controller.setSelection(ar);*/
 
 		});
 		var jobStore = new qx.data.store.Rest(jobs, "get");

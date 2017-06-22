@@ -45,19 +45,23 @@ qx.Class.define("webcron.view.JobsList",
                 	
                 	
                 	
-                	var selection = qx.core.Init.getApplication().getLogsView()._controller.getSelection();
+                	/*var selection = qx.core.Init.getApplication().getLogsView()._controller.getSelection();
         			var ind=null;
         			if(selection.length>0){
         				ind=selection.getItem(0).getStartTime();
         			}
         			
-                	qx.core.Init.getApplication().index = ind;
+                	qx.core.Init.getApplication().index = ind;*/
                 	
                 	
-                	
+                	qx.core.Init.getApplication().getLogsView()._controller.setModel(new qx.data.Array());
                 	
                 	qx.core.Init.getApplication().getLogStore().getLogsResource().get({id:e.getData().getItem(0).getId()});
                 }else{
+                	if(qx.core.Init.getApplication().getLogsView()){
+                		qx.core.Init.getApplication().getLogsView()._controller.setModel(new qx.data.Array());
+                	}
+                	
                 	qx.core.Init.getApplication().projectController.setEnabled(false);
                 }
             });

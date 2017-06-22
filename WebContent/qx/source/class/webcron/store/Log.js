@@ -33,7 +33,29 @@ qx.Class.define("webcron.store.Log", {
 		logs.addListener("success", function(e) {
 			
 			var model = qx.core.Init.getApplication().getLogsView()._controller.getModel();
-			var selection=null;
+
+			var logs = e.getData();
+			
+			if(model.length>0){
+				var last = model.getItem(0).getStartTime();
+				
+				
+				for(i=0;i<logs.length;i++){
+					
+					if(logs[i].startTime>last){
+						qx.core.Init.getApplication().getLogsView()._controller.getModel().unshift(qx.data.marshal.Json.createModel(logs[i]));
+					}
+					
+				}
+			}else{
+				qx.core.Init.getApplication().getLogsView()._controller.setModel(qx.data.marshal.Json.createModel(logs));
+			}
+			
+			
+			
+				
+			
+			/*var selection=null;
 			if(model){
 				for(var i=0;i<model.length;i++){
     				if(model.getItem(i).getStartTime()==qx.core.Init.getApplication().index) {
@@ -44,7 +66,7 @@ qx.Class.define("webcron.store.Log", {
 			
 			var ar = new qx.data.Array();
 			ar.push(selection);
-			qx.core.Init.getApplication().getLogsView()._controller.setSelection(ar);
+			qx.core.Init.getApplication().getLogsView()._controller.setSelection(ar);*/
 
 		},this);
 

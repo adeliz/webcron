@@ -18,8 +18,8 @@ qx.Class.define("webcron.view.Logs",
     		var store = new qx.data.store.Rest(qx.core.Init.getApplication().getLogStore().getLogsResource(), "get");
     		var list = new qx.ui.form.List();
     		//list.setDecorator(null);
-    		var controller = this._controller = new qx.data.controller.List(null, list, "statusText");
-    		store.bind("model", controller, "model");
+    		var controller = this._controller = new qx.data.controller.List(new qx.data.Array(), list, "statusText");
+    		//store.bind("model", controller, "model");
     		
     		controller.setDelegate({
                 bindItem : function(controller, item, id) {
