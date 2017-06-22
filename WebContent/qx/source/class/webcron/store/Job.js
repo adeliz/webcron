@@ -86,11 +86,6 @@ qx.Class.define("webcron.store.Job", {
 			//qx.core.Init.getApplication().getProject().getJobs().removeAll();
 			var jobs = e.getData();
 			
-			if(JSON.stringify(qx.util.Serializer.toNativeObject(qx.core.Init.getApplication().getProject().getJobs())) === JSON.stringify(jobs)){
-				console.log(true);
-			};
-			
-			
 			for(i=0;i<jobs.length;i++){
 				
 				

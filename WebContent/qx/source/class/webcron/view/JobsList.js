@@ -72,7 +72,15 @@ qx.Class.define("webcron.view.JobsList",
 
     		});
             
-    		controller.setDelegate({
+         // create the filter
+            var filterObj = new webcron.view.SearchAsYouTypeFilter(this._controller);
+
+            // set the filter
+            controller.setDelegate(filterObj);
+
+            
+    		/*controller.setDelegate({
+
                 createItem : function() {
                     return new webcron.view.JobWidget();
                 },
@@ -88,47 +96,18 @@ qx.Class.define("webcron.view.JobsList",
                     
                     controller.bindProperty("active", "active", null, item, id);
                     controller.bindPropertyReverse("active", "active", null, item, id);
-                    //controller.bindPropertyReverse("visibility", "visible", null, item, id);
-                    /*controller.bindProperty("opacity", "opacity2", {converter: function(value) {
-                        if(typeof value == 'undefined'){
-                            value=1;
-                        }
-                        return value*100;
-                    }}, item, id);*/
-                    /*controller.bindProperty("geometryType", "icon", {
-                        converter: function(data) {
-                            switch (data) {
-                                case "Point":
-                                    return "map/icons/points.png";
 
-                                case "Path":
-                                    return "map/icons/line.png";
-
-                                case "Polygon":
-                                    return "map/icons/polygon.png";
-
-                                case "Geometry":
-                                    return "map/icons/mix.png";
-                                    
-                                case "Mix":
-                                    return "map/icons/mix.png";
-
-                                default:
-                                    return "map/icons/raster.png";;
-                            }
-                        }
-                    }, item, id);*/
                 },
 
                 configureItem : function(item) {
-                    //item.getChildControl("icon").setWidth(48);
-                    //item.getChildControl("icon").setHeight(48);
-                    //item.getChildControl("icon").setScale(true);
-                    //item.setMinHeight(52);
-                    //item.setAppearance("my.Appearance");
+
                 }
-            });
+            });*/
     		
+    		// make every input in the textfield update the controller
+            qx.core.Init.getApplication().getToolBar().textfield.bind("changeValue", filterObj, "searchString");
+            
+            
 			this.add(this._list, {
 				flex : 1
 			});

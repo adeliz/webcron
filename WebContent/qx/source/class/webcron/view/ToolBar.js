@@ -67,7 +67,19 @@ qx.Class.define("webcron.view.ToolBar",{
         this.add(actionPart);
         this.add(duplPart);
         this.add(runPart);
+        
+        this.textfield = new qx.ui.form.TextField().set({
+        	marginLeft:4,
+        	marginRight:20,
+        	width:150,
+        	placeholder:'Search...'
+        });
+        this.textfield.setAlignY("middle");
+        this.textfield.setLiveUpdate(true);
+        this.addSpacer();
+        this.add(this.textfield);
         //this.addSpacer();
+        
         
     },
     
